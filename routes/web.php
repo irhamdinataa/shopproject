@@ -23,5 +23,7 @@ Route::post('/daftar', [LoginController::class,'register']);
 Route::post('/signin', [LoginController::class,'login']);
 Route::post('/logout', [LoginController::class,'logout']);
 Route::post('/order', [OrderController::class,'order']);
+Route::get('/cart', [OrderController::class,'cart']);
+
 
 

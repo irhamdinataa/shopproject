@@ -14,4 +14,9 @@ class OrderController extends Controller
         ]);
         return redirect('/');
     }
+
+    public function cart(){
+        $cart = \DB::table('view_carts')->get();
+        return view('cart', compact('cart'));
+    }
 }
