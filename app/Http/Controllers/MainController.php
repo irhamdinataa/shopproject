@@ -7,6 +7,10 @@ use App\Models\Items;
 
 class MainController extends Controller
 {
+    public function index(){
+        $items = \DB::table('items')->get();
+        return view('welcome',compact('items'));
+    }
     public function store(Request $request){
         $this->validate($request, [
         'file' => 'required|max:2048'
