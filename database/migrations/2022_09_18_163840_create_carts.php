@@ -17,6 +17,7 @@ class CreateCarts extends Migration
             $table->id('id_cart');
             $table->string('id_user');
             $table->string('id_item');
+            $table->integer('total');
         });
     }
 

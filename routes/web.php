@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,10 @@ use App\Http\Controllers\MainController;
 
 Route::get('/', [MainController::class,'index']);
 Route::post('/pushData', [MainController::class,'store']);
+Route::get('/login', [LoginController::class,'index']);
+Route::post('/daftar', [LoginController::class,'register']);
+Route::post('/signin', [LoginController::class,'login']);
+Route::post('/logout', [LoginController::class,'logout']);
+Route::post('/order', [OrderController::class,'order']);
+
 

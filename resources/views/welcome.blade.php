@@ -26,6 +26,9 @@
 
 <body>
 	<header id="header"><!--header-->
+	<?php
+	$id = Session::get('id_user');
+	?>
 		
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
@@ -167,21 +170,25 @@
 										<img src="/file_data/{{$items->picture}}" alt="" />
 										<h2>Rp {{$items->price}}</h2>
 										<p>{{$items->product_name}}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<?php if($id != null){?>
+											
+<button data-toggle="modal" data-target="#myModal"  data-id="{{ $items->id_item }}" class="btn btn-default add-to-cart total"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+										<!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> -->
+										<?php }else{} ?>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>Rp {{$items->price}}</h2>
 											<p>{{$items->product_name}}</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<?php if($id != null){?>
+											<button data-toggle="modal" data-target="#myModal"  data-id="{{ $items->id_item }}" class="btn btn-default add-to-cart total"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+
+										<!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> -->
+										<?php }else{} ?>
 										</div>
 									</div>
 								</div>
 								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
 								</div>
 							</div>
 						</div>
@@ -206,6 +213,33 @@
 		</div>
 		
 	</footer><!--/Footer-->
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+           <div class="modal-dialog">
+             <form action="/order" method="post">
+             <!-- Modal content-->
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4 class="modal-title">Input</h4>
+               </div>
+               <div class="modal-body">
+                 <input type="hidden" id="id_item" class="id_item" name="id_item">
+                 <div class="form-group">
+                   <label for="exampleInputEmail1">Total</label>
+                   <input type="text" class="form-control " id="total" name="total" placeholder="total">
+                 </div>
+               </div>
+               <div class="modal-footer">
+                 <button type="submit" class="btn btn-default">Buy</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+             </div>
+           </form>
+           </div>
+         </div>
+
+        </div>
 	
 
   
@@ -215,5 +249,12 @@
 	<script src="{{ asset('BahanStudy')}}/js/price-range.js"></script>
     <script src="{{ asset('BahanStudy')}}/js/jquery.prettyPhoto.js"></script>
     <script src="{{ asset('BahanStudy')}}/js/main.js"></script>
+	
+<script type="text/javascript">
+ $(".total").click(function() {
+  $(".id_item").val($(this).attr('data-id'));
+  });
+
+ </script>
 </body>
 </html>
