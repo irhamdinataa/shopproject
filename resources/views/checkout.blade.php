@@ -32,7 +32,7 @@
                            <div class="row">
                                    <div class="col-md-4 clearfix">
                                            <div class="logo pull-left">
-                                                   <a href="index.html"><img src="/BahanStudy/images/home/logo.png" alt="" /></a>
+                                                   <a href="/"><img src="/BahanStudy/images/home/logo.png" alt="" /></a>
                                            </div>
 
                                    </div>
@@ -41,7 +41,13 @@
                                                    <ul class="nav navbar-nav">
                                                    <li><a href="/"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+								@if($users == null)
+{
+			 <li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+		}else{
+            <li><a href="/logut"><i class="fa fa-lock"></i> Logout</a></li>
+        }
+         @endif
                                                    </ul>
                                            </div>
                                    </div>

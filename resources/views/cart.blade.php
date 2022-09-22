@@ -32,16 +32,20 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{ asset('BahanStudy')}}/images/home/logo.png" alt="" /></a>
+							<a href="/"><img src="{{ asset('BahanStudy')}}/images/home/logo.png" alt="" /></a>
 						</div>
 						
 					</div>
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="/"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+							@if($users == null)
+								
 								<li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+								@elseif($users != null)
+								<li><a href="/logout"><i class="fa fa-lock"></i> Logout</a></li>
+        
+         @endif
 							</ul>
 						</div>
 					</div>
@@ -61,13 +65,14 @@
 								<span class="icon-bar"></span>
 							</button>
 						</div>
-						<div class="mainmenu pull-left">
+												<!-- <div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-							<li><a href="/" class="active">Home</a></li>
+								<li><a href="/" class="active">Home</a></li>
 								<li><a href="contact-us.html">Contact</a></li>
 								<li><a href="/confirm">Confirm</a></li>
 							</ul>
-						</div>
+						</div> -->
+
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
@@ -81,18 +86,12 @@
 
 	<section id="cart_items">
 		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
-				</ol>
-			</div>
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Item</td>
-							<td class="description"></td>
+							<td class="description">Product Name</td>
 							<td class="price">Price</td>
 							<td class="quantity">Quantity</td>
 							<td class="total">Total</td>
@@ -106,20 +105,19 @@
 						@foreach($cart as $cart)
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="/file_data/{{$cart->picture}}" alt=""></a>
+								<img width="200" height="200" src="/file_data/{{$cart->picture}}" alt="">
 							</td>
 							<td class="cart_description">
-								<h4><a href="">{{$cart->product_name}}
-</a></h4>
+								<h4>{{$cart->product_name}}</h4>
 							</td>
 							<td class="cart_price">
-								<p>Rp {{$cart->price}}</p>
+								<h4>Rp {{$cart->price}}</h4>
 							</td>
 							<td class="cart_quantity">
-						{{$cart->total}}
+								<h4>{{$cart->total}}</h4>
 						</td>
 							<td class="cart_total">
-								<p class="cart_total_price">Rp {{$cart->price * $cart->total}}</p>
+								<h4 class="cart_total_price">Rp {{$cart->price * $cart->total}}</h4>
 							</td>
 						</tr>
 						<?php

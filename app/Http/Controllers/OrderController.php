@@ -17,11 +17,13 @@ class OrderController extends Controller
 
     public function cart(){
         $cart = \DB::table('view_carts')->get();
-        return view('cart', compact('cart'));
+        $users = \Session::get('id_user');
+
+        return view('cart', compact('cart','users'));
     }
 
     public function checkout(){
-        $id_checkout = rand().rand().rand();
+        $id_checkout = rand();
         $total = 0;
         $data = \DB::table('carts')->where('id_user',\Session::get('id_user'))->get();
         foreach ($data as $cart){
@@ -46,11 +48,14 @@ class OrderController extends Controller
 
     public function checkout_list(){
         $checkout = \DB::table('view_checkouts')->get();
-        return view('checkout',compact('checkout'));
+        $users = \Session::get('id_user');
+        return view('checkout',compact('checkout','users'));
     }
 
     public function confirm(){
-        return view('confirm');
+        $users = \Session::get('id_user');
+
+        return view('confirm','users');
     }
     public function save_confirm(Request $request){
         $this->validate($request, [

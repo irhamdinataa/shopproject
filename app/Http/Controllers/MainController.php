@@ -9,7 +9,8 @@ class MainController extends Controller
 {
     public function index(){
         $items = \DB::table('items')->get();
-        return view('welcome',compact('items'));
+        $users = \Session::get('id_user');
+        return view('welcome',compact('items','users'));
     }
     public function store(Request $request){
         $this->validate($request, [

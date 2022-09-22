@@ -35,16 +35,21 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{ asset('BahanStudy')}}/images/home/logo.png" alt="" /></a>
+							<a href="/"><img src="{{ asset('BahanStudy')}}/images/home/logo.png" alt="" /></a>
 						</div>
 						
 					</div>
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="/"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								@if($users == null)
+								
 								<li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+								@elseif($users != null)
+								<li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="/logout"><i class="fa fa-lock"></i> Logout</a></li>
+        
+         @endif
 							</ul>
 						</div>
 					</div>
@@ -64,13 +69,13 @@
 								<span class="icon-bar"></span>
 							</button>
 						</div>
-						<div class="mainmenu pull-left">
+						<!-- <div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="/" class="active">Home</a></li>
 								<li><a href="contact-us.html">Contact</a></li>
 								<li><a href="/confirm">Confirm</a></li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
