@@ -26,6 +26,8 @@ Route::post('/order', [OrderController::class,'order']);
 Route::get('/cart', [OrderController::class,'cart']);
 Route::get('/checkout', [OrderController::class,'checkout']);
 Route::get('/checkout_list', [OrderController::class,'checkout_list']);
+Route::get('/confirm', [OrderController::class,'confirm']);
+Route::post('/post_confirm', [OrderController::class,'save_confirm']);
 
 
 

@@ -48,4 +48,24 @@ class OrderController extends Controller
         $checkout = \DB::table('view_checkouts')->get();
         return view('checkout',compact('checkout'));
     }
+
+    public function confirm(){
+        return view('confirm');
+    }
+    public function save_confirm(Request $request){
+        $this->validate($request, [
+            'file' => 'required|max:2048'
+            ]);
+            $file = $request->file('file');
+            $file_name = time()."_".$file->getClientOriginalName();
+            $upload_destination = 'file_data';
+            if($file->move($upload_destination,$file_name)){
+                \DB::table('confirmations')->insert([
+                    'id_user' => \Session::get('id_user'),
+                    'id_checkout' => $request->id_token,
+                    'proof' => $file_name
+                ]);
+                return redirect('/confirm');
+            }
+    }
 }
