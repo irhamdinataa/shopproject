@@ -53,9 +53,7 @@ class OrderController extends Controller
     }
 
     public function confirm(){
-        $users = \Session::get('id_user');
-
-        return view('confirm','users');
+        return view('confirm');
     }
     public function save_confirm(Request $request){
         $this->validate($request, [

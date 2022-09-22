@@ -43,6 +43,7 @@
 								
 								<li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
 								@elseif($users != null)
+								<li><a href="/confirm"><i class="fa fa-shopping-cart"></i> Confirm</a></li>
 								<li><a href="/logout"><i class="fa fa-lock"></i> Logout</a></li>
         
          @endif
