@@ -67,13 +67,13 @@
                                                            <span class="icon-bar"></span>
                                                    </button>
                                            </div>
-                                           <div class="mainmenu pull-left">
+                                           <!-- <div class="mainmenu pull-left">
                                                    <ul class="nav navbar-nav collapse navbar-collapse">
                                                    <li><a href="/" class="active">Home</a></li>
 								<li><a href="contact-us.html">Contact</a></li>
 								<li><a href="/confirm">Confirm</a></li>
                                                    </ul>
-                                           </div>
+                                           </div> -->
                                    </div>
                                    <div class="col-sm-3">
                                            <div class="search_box pull-right">
@@ -87,24 +87,12 @@
 
    <section id="cart_items">
            <div class="container">
-                   <div class="breadcrumbs">
-                           <ol class="breadcrumb">
-                             <li><a href="#">Home</a></li>
-                             <li class="active">Check out</li>
-                           </ol>
-                   </div><!--/breadcrums-->
-
-
-                   <div class="review-payment">
-                           <h2>Review & Payment</h2>
-                   </div>
-
                    <div class="table-responsive cart_info">
                            <table class="table table-condensed">
                                    <thead>
                                            <tr class="cart_menu">
                                                    <td class="image">Item</td>
-                                                   <td class="description"></td>
+                                                   <td class="description">Product Name</td>
                                                    <td class="price">Price</td>
                                                    <td class="quantity">Quantity</td>
                                                    <td class="total">Total</td>
@@ -116,19 +104,19 @@
                  @foreach($checkout as $ckt)
                                            <tr>
                                                    <td class="cart_product">
-                                                           <a href=""><img src="/file_data/{{$ckt->picture}}" alt=""></a>
+                                                      <img width="200" height="200" src="/file_data/{{$ckt->picture}}" alt="">
                                                    </td>
                                                    <td class="cart_description">
-                                                           <h4><a href="">{{$ckt->product_name}}</a></h4>
+                                                           <h4>{{$ckt->product_name}}</h4>
                                                    </td>
                                                    <td class="cart_price">
-                                                           <p>Rp {{$ckt->price}}</p>
+                                                           <h4>Rp {{$ckt->price}}</h4>
                                                    </td>
                                                    <td class="cart_quantity">
-                                                           {{$ckt->total}}
+                                                           <h4>{{$ckt->total}}</h4>
                                                    </td>
                                                    <td class="cart_total">
-                                                           <p class="cart_total_price">Rp{{$ckt->price * $ckt->total}}</p>
+                                                           <h4 style="color:#fe980f;">Rp{{$ckt->price * $ckt->total}}</h4>
                                            </tr>
                <?php $total += ($ckt->total * $ckt->price) ?>
                @endforeach

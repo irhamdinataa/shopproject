@@ -147,7 +147,7 @@
 						<ul>
 							<li>Total <span>{{$total}}</span></li>
 						</ul>
-						<a class="btn btn-default check_out" href="/checkout">Check Out</a>
+						<a class="btn btn-default check_out" style="margin:0px 40px" href="/checkout">Check Out</a>
 					</div>
 				</div>
 			</div>
