@@ -79,7 +79,9 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<form class="form" method="get" action="{{ route('search') }}">
+							<input type="search" name="search" placeholder="Search"/>
+						</form>
 						</div>
 					</div>
 				</div>
@@ -205,6 +207,7 @@
 			</div>
 		</div>
 	</section>
+
 	
 	<footer id="footer"><!--Footer-->
 		

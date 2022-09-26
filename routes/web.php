@@ -28,6 +28,8 @@ Route::get('/checkout', [OrderController::class,'checkout']);
 Route::get('/checkout_list', [OrderController::class,'checkout_list']);
 Route::get('/confirm', [OrderController::class,'confirm']);
 Route::post('/post_confirm', [OrderController::class,'save_confirm']);
+Route::get('/search', [MainController::class,'search'])->name('search');
+Route::get('/searchCart', [OrderController::class,'searchCart'])->name('searchcart');
 
 
 

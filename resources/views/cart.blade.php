@@ -76,8 +76,10 @@
 
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+					<div class="search_box pull-right">
+							<form class="form" method="get" action="{{ route('searchcart') }}">
+							<input type="search" name="search" placeholder="Search"/>
+						</form>
 						</div>
 					</div>
 				</div>
@@ -103,30 +105,33 @@
 						<?php
 						$total =0;
 						?>
-						@foreach($cart as $cart)
+						@foreach($cart as $carts)
 						<tr>
 							<td class="cart_product">
-								<img width="200" height="200" src="/file_data/{{$cart->picture}}" alt="">
+								<img width="200" height="200" src="/file_data/{{$carts->picture}}" alt="">
 							</td>
 							<td class="cart_description">
-								<h4>{{$cart->product_name}}</h4>
+								<h4>{{$carts->product_name}}</h4>
 							</td>
 							<td class="cart_price">
-								<h4>Rp {{$cart->price}}</h4>
+								<h4>Rp {{$carts->price}}</h4>
 							</td>
 							<td class="cart_quantity">
-								<h4>{{$cart->total}}</h4>
+								<h4>{{$carts->total}}</h4>
 						</td>
 							<td class="cart_total">
-								<h4 class="cart_total_price">Rp {{$cart->price * $cart->total}}</h4>
+								<h4 style="color:#fe980f;">Rp {{$carts->price * $carts->total}}</h4>
 							</td>
 						</tr>
 						<?php
-						$total += ($cart->total * $cart->price);
+						$total += ($carts->total * $carts->price);
 						?>
 					@endforeach
 					</tbody>
 				</table>
+				<div style= "float:right;padding: 5px 0px">
+			{{ $cart->links() }}
+			</div>
 			</div>
 		</div>
 	</section> <!--/#cart_items-->
@@ -142,12 +147,13 @@
 						<ul>
 							<li>Total <span>{{$total}}</span></li>
 						</ul>
-							<a class="btn btn-default check_out" href="/checkout">Check Out</a>
+						<a class="btn btn-default check_out" href="/checkout">Check Out</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section><!--/#do_action-->
+	
 
 	<footer id="footer"><!--Footer-->
 	

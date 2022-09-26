@@ -16,10 +16,18 @@ class OrderController extends Controller
     }
 
     public function cart(){
-        $cart = \DB::table('view_carts')->get();
+        $cart = \DB::table('view_carts')->paginate(6);
         $users = \Session::get('id_user');
 
         return view('cart', compact('cart','users'));
+    }
+
+    public function searchCart(Request $request){
+        $keyword = $request->search;
+        $users = \Session::get('id_user');
+        $cart = \DB::table('view_carts')->where('product_name', 'like', "%" . $keyword . "%")->paginate(6);
+        session()->flashInput($request->input());
+        return view('cart', compact('cart','users'))->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
     public function checkout(){

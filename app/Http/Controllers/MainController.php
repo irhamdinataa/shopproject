@@ -30,4 +30,11 @@ class MainController extends Controller
             return response($res);
         }
     }
+    public function search(Request $request){
+        $keyword = $request->search;
+        $users = \Session::get('id_user');
+        $items = \DB::table('items')->where('product_name', 'like', "%" . $keyword . "%")->get();
+        session()->flashInput($request->input());
+        return view('welcome', compact('items','users'))->with('i', (request()->input('page', 1) - 1) * 6);
+    }
 }
