@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function order(Request $request){
+        $id_itemss = \DB::table('carts')->where('id_item', '=', $request->id_item)->first();
+        $total = \DB::table('carts')->where('id_item', '=', $request->id_item)->sum('total');
+        $fix_total = (int)$total + (int)$request->total;
+        if ($id_itemss === null){
         \DB::table('carts')->insert([
             'id_user' => \Session::get('id_user'),
             'id_item' => $request->id_item,
             'total' => $request->total,
         ]);
         return redirect('/');
+    }else{
+        \DB::table('carts')->update([
+            'total' => $fix_total,
+        ]);
+        return redirect('/');
+    }
     }
 
     public function cart(){
