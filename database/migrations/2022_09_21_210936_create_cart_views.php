@@ -33,7 +33,7 @@ class CreateCartViews extends Migration
     {
         return <<<SQL
             CREATE VIEW view_carts AS
-            SELECT carts.id_cart AS id_cart, users.name AS name, items.product_name AS product_name, items.price AS price, items.picture AS picture, carts.total AS total FROM ((carts JOIN items ON ((carts.id_item = items.id_item))) JOIN users ON ((carts.id_user = users.id_user))) 
+            SELECT carts.id_cart AS id_cart, users.name AS name, items.product_name AS product_name, items.price AS price, items.picture AS picture, carts.total AS total,  carts.total*items.price as fix_total FROM ((carts JOIN items ON ((carts.id_item = items.id_item))) JOIN users ON ((carts.id_user = users.id_user))) 
 SQL;
     }
    

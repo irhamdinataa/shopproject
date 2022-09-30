@@ -27,9 +27,10 @@ class OrderController extends Controller
 
     public function cart(){
         $cart = \DB::table('view_carts')->paginate(6);
+        $fix_total = \DB::table('view_carts')->sum('fix_total');
         $users = \Session::get('id_user');
 
-        return view('cart', compact('cart','users'));
+        return view('cart', compact('cart','users','fix_total'));
     }
 
     public function searchCart(Request $request){

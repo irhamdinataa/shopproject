@@ -102,9 +102,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php
-						$total =0;
-						?>
 						@foreach($cart as $carts)
 						<tr>
 							<td class="cart_product">
@@ -123,9 +120,6 @@
 								<h4 style="color:#fe980f;">Rp {{$carts->price * $carts->total}}</h4>
 							</td>
 						</tr>
-						<?php
-						$total += ($carts->total * $carts->price);
-						?>
 					@endforeach
 					</tbody>
 				</table>
@@ -145,7 +139,7 @@
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Total <span>{{$total}}</span></li>
+							<li>Total <span>{{$fix_total}}</span></li>
 						</ul>
 						<a class="btn btn-default check_out" style="margin:0px 40px" href="/checkout">Check Out</a>
 					</div>
